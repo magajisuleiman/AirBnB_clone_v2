@@ -12,7 +12,6 @@ class State(BaseModel, Base):
     envv = getenv('HBNB_TYPE_STORAGE')
     if envv =='db':
         name = Column(String(128), nullable=False)
-        cities = relationship('City', cascade='all, delete', backref='state')
     else:
         ''' the file storage relation '''
         @property
