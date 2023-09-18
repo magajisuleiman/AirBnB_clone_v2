@@ -136,7 +136,6 @@ class HBNBCommand(cmd.Cmd):
             setattr(new_instance, k, v)
         new_instance.save()
 
-
     def help_create(self):
         """ Help information for the create method """
         print("Creates a class of any type")
@@ -291,7 +290,7 @@ class HBNBCommand(cmd.Cmd):
             args = args.partition(' ')
 
             # if att_name was not quoted arg
-            if not att_name and args[0] !=  ' ':
+            if not att_name and args[0] != ' ':
                 att_name = args[0]
             # check for quoted val arg
             if args[2] and args[2][0] == '\"':
@@ -330,6 +329,7 @@ class HBNBCommand(cmd.Cmd):
         """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
