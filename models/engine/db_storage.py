@@ -40,7 +40,7 @@ class DBStorage:
         classes = {
             "City": City, "State": State,
             "User": User, "Place": Place,
-            "Review": Review, "Amenity": Amenity
+            "Review": Review
         }
         res = {}
         qrows = []
