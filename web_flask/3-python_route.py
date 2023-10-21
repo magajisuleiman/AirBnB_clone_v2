@@ -28,6 +28,7 @@ def cshow(text):
 
 
 @app.route('/python/<text>')
+@app.route('/python', defaults={'text': 'is cool'})
 def show(text):
     ''' shows python and some text '''
     if (text):
