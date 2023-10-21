@@ -4,6 +4,7 @@
 from flask import Flask
 
 app = Flask(__name__)
+''' Flask app instance '''
 app.url_map.strict_slashes = False
 
 
