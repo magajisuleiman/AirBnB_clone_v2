@@ -33,6 +33,10 @@ class DBStorage:
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
+    def close(self):
+        ''' For closing the storage engine. '''
+        self.__session.close()
+
     def all(self, cls=None):
         '''
         For querying the current database
