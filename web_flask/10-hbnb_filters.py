@@ -12,8 +12,7 @@ script starts Flask web app
             /states_list & /states:  display HTML and state info from storage
             /cities_by_states:    display HTML and state, city relations
             /states/<id>:         display HTML and state, city given state id
-            /hbnb_filters:        disp HTML w/ working state, city filter
-            /hbnb:                disp HTML w/ working property, amenity filter
+            /hbnb_filters:        display a HTML page like 6-index.html
 """
 from models import storage
 from flask import Flask, render_template
@@ -27,12 +26,10 @@ def hello_hbnb():
     return "Hello HBNB!"
 
 
-"""
 @app.route('/hbnb')
 def hbnb():
-    """ """
+    """display text"""
     return "HBNB"
-"""
 
 
 @app.route('/c/<text>')
@@ -127,28 +124,6 @@ def html_filters():
     amenity_objs = [a for a in storage.all("Amenity").values()]
     return render_template('10-hbnb_filters.html',
                            state_objs=state_objs, amenity_objs=amenity_objs)
-
-
-@app.route('/hbnb')
-def html_all_filters():
-    """display html page w/ working city/state filters & amenities/properties
-       runs with web static css files
-    """
-    state_objs = [s for s in storage.all("State").values()]
-    amenity_objs = [a for a in storage.all("Amenity").values()]
-    place_objs = [p for p in storage.all("Place").values()]
-    user_objs = [u for u in storage.all("User").values()]
-    place_owner_objs = []
-    for place in place_objs:
-        for user in user_objs:
-            if place.user_id == user.id:
-                place_owner_objs.append(["{} {}".format(
-                    user.first_name, user.last_name), place])
-    place_owner_objs.sort(key=lambda p: p[1].name)
-    return render_template('100-hbnb.html',
-                           state_objs=state_objs,
-                           amenity_objs=amenity_objs,
-                           place_owner_objs=place_owner_objs)
 
 
 if __name__ == "__main__":
